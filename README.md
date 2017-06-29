@@ -1,7 +1,7 @@
 # docker-openvpn
 Docker stack with [OpenVPN](https://openvpn.net), [Transmission](https://transmissionbt.com), and a reverse [nginx](http://nginx.org) proxy.
 
-This is useful if you want to run containers over a VPN but don't want to run the openvpn directly on a container host. It uses [Docker Container Networking](https://docs.docker.com/compose/networking/ )and requires [docker-engine](https://github.com/moby/moby) 1.10+ and [docker-compose](https://github.com/docker/compose) 1.6.0+, although more current versions are highly recommended.
+This is useful if you want to run containers over a VPN but don't want to run the openvpn directly on a container host. It uses [Docker Container Networking](https://docs.docker.com/compose/networking/ ) and requires [docker-engine](https://github.com/moby/moby) 1.10+ and [docker-compose](https://github.com/docker/compose) 1.6.0+, although more current versions are highly recommended.
 
 ## Files
 
