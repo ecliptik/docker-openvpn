@@ -1,0 +1,32 @@
+version: '2'
+services:
+    openvpn:
+      build:
+        context: .
+        dockerfile: Dockerfile.openvpn
+      stdin_open: true
+      cap_add:
+        - NET_ADMIN
+      devices:
+        - "/dev/net/tun"
+      ports:
+        - "20000:20000/udp"
+    transmission:
+      build:
+        context: .
+        dockerfile: Dockerfile.transmission
+      stdin_open: true
+      volumes:
+        - /opt/transmission/torrents:/torrents
+        - /opt/transmission/Downloads:/var/lib/transmission-daemon/Downloads
+        - /opt/transmission:/etc/transmission
+      network_mode: "service:openvpn"
+    nginx:
+      image: nginx:1.13-alpine
+      stdin_open: true
+      ports:
+        - "9091:80"
+      volumes:
+        - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+      links:
+        - openvpn:transmission
